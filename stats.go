@@ -3,6 +3,7 @@ package stats
 import (
 	"encoding/json"
 	"log"
+	"net/http"
 	"runtime"
 
 	linuxproc "github.com/c9s/goprocinfo/linux"
@@ -79,7 +80,21 @@ func BToMb(b uint64) uint64 {
 }
 
 // Printstatus bla bla
-func Printstatus() string {
+func PrintStatus() string {
+	stats := Stats{}
+	stats.PrintMemory()
+	stats.PrintCPU()
+	stats.PrintDisc()
+
+	tojson, err := json.Marshal(stats)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return string(tojson)
+}
+
+//PrintStatusHttp bla bla
+func PrintStatusHttp(w http.ResponseWriter, r *http.Request) string {
 	stats := Stats{}
 	stats.PrintMemory()
 	stats.PrintCPU()
