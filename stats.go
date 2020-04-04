@@ -79,7 +79,7 @@ func BToMb(b uint64) uint64 {
 	return b / 1024 / 1024
 }
 
-// Printstatus bla bla
+// PrintStatus bla bla
 func PrintStatus() string {
 	stats := Stats{}
 	stats.PrintMemory()
@@ -93,8 +93,8 @@ func PrintStatus() string {
 	return string(tojson)
 }
 
-//PrintStatusHttp bla bla
-func PrintStatusHttp(w http.ResponseWriter, r *http.Request) string {
+//PrintStatusHTTP bla bla
+func PrintStatusHTTP(w http.ResponseWriter, r *http.Request) string {
 	stats := Stats{}
 	stats.PrintMemory()
 	stats.PrintCPU()
