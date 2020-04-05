@@ -2,6 +2,7 @@ package stats
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"runtime"
@@ -94,7 +95,7 @@ func PrintStatus() string {
 }
 
 //PrintStatusHTTP bla bla
-func PrintStatusHTTP(w http.ResponseWriter, r *http.Request) string {
+func PrintStatusHTTP(w http.ResponseWriter, r *http.Request) {
 	stats := Stats{}
 	stats.PrintMemory()
 	stats.PrintCPU()
@@ -104,5 +105,5 @@ func PrintStatusHTTP(w http.ResponseWriter, r *http.Request) string {
 	if err != nil {
 		log.Fatal(err)
 	}
-	return string(tojson)
+	fmt.Fprintf(w, string(tojson))
 }
