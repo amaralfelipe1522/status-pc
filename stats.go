@@ -108,7 +108,7 @@ func PrintStatusHTTP(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(tojson))
 }
 
-//Print bla bla
+//Print bla blaa
 func Print() {
 	http.HandleFunc("/", PrintStatusHTTP)
 }
